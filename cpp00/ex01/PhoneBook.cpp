@@ -1,4 +1,9 @@
 #include "PhoneBook.hpp"
 
+PhoneBook::PhoneBook()
+{
+}
 
-int main()
+PhoneBook::~PhoneBook()
+{
+}

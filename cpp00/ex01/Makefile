@@ -6,21 +6,24 @@ NAME = megaphone
 
 SRCS = main.cpp Contact.cpp PhoneBook.cpp
 
-OBJS = ${SRCS:.cpp=.o}
+OBJ_DIR = objects/
+
+OBJS = $(SRCS:%.cpp=$(OBJ_DIR)%.o)
 
 all: $(NAME)
 
-.cpp.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.cpp=.o)
+$(OBJ_DIR)%.o: %.cpp $(HEADERS)
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
 	$(CC) $(OBJS) $(CFLAGS) -o $(NAME)
 
 clean:
-	@$(RM)  $(OBJS)
+	@$(RM) -rf $(OBJ_DIR)
 
 fclean: clean
-	@$(RM) $(NAME)
+	@$(RM) -rf $(NAME)
 
 re: fclean all
 
