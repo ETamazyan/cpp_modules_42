@@ -9,6 +9,10 @@ Contact::~Contact()
 {
 }
 
+int Contact::get_index()
+{
+	return (this->index);
+}
 std::string Contact::get_first_name()
 {
 	return (this->first_name);
@@ -23,7 +27,7 @@ std::string Contact::get_nickname()
 {
 	return (this->nickname);
 }
-
+ 
 std::string Contact::get_phone_number()
 {
 	return (this->phone_number);
@@ -33,7 +37,10 @@ std::string Contact::get_darkest_secret()
 {
 	return (this->darkest_secret);
 }
-
+void Contact::set_index(int index)
+{
+	this->index = index;
+}
 void Contact::set_first_name(std::string first_name)
 {
 	this->first_name = first_name;

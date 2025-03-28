@@ -1,21 +1,5 @@
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
-// #include <cstring>
-// #include <string>
-#include <cstdio>
-
-// cut below
-#include <iostream>
-#include <ctime>
-#include <sstream>
-
-long long getLocalTime() {
-	std::time_t now = std::time(NULL);
-	struct tm localTime = *std::localtime(&now);
-	long long time = (localTime.tm_hour * 10000LL) + (localTime.tm_min * 100LL) + localTime.tm_sec;
-	return time;
-}
-// cut above 
 
 int	ft_isalpha(std::string chr)
 {
@@ -50,24 +34,15 @@ int main()
 	PhoneBook phonebook;
 	std::string cmd;
 	int index = 0;
-	long long time;
 
-	time = getLocalTime();
 	while (1)
 	{
-		std::cout << "while 1 = " << (getLocalTime() - time) <<std::endl;
 		cmd = edit_get_inp("Enter command: ADD | SEARCH | EXIT\n");
-		if (cmd == "ADD")
-		{
-			std::cout << "cmd == ADD = " << (getLocalTime() - time) <<std::endl;
-			std::cout << cmd <<std::endl;
-			phonebook.add_contact(&index, time);
-			// break;
-		}
+		if (cmd == "ADD") // 
+			phonebook.add_contact(&index);
 		if (cmd == "SEARCH")
 		{
-			std::cout << cmd <<std::endl;
-			break;
+			phonebook.search_print_contact(edit_get_inp("Enter an index\n"));
 		}
 		if (cmd == "EXIT")
 		{

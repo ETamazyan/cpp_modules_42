@@ -8,9 +8,9 @@ class	PhoneBook
 	public:
 		PhoneBook();
 		~PhoneBook();
-		void add_contact(int *index, int time); // change here
-		// void search_contact(void *inf);
-		// int get_amount();
+		void add_contact(int *index); // change here
+		void search_print_contact(std::string i);
+		int get_amount();
 		// std::string get_cmd(std::string str);
 	private:
 		int contacts_amount;
