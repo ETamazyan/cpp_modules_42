@@ -8,11 +8,11 @@ Contact::Contact()
 Contact::~Contact()
 {
 }
-
 int Contact::get_index()
 {
 	return (this->index);
 }
+
 std::string Contact::get_first_name()
 {
 	return (this->first_name);
@@ -27,7 +27,7 @@ std::string Contact::get_nickname()
 {
 	return (this->nickname);
 }
- 
+
 std::string Contact::get_phone_number()
 {
 	return (this->phone_number);

@@ -1,14 +1,64 @@
 #include "PhoneBook.hpp"
 
-
-
-// *********************
-// *********************
+// ************************
 #include <iostream>
+#include <iomanip>  // for std::setw, std::right
 #include <string>
-#include <climits>  // For INT_MAX and INT_MIN
+#include <sstream>
+// ************************
 
-int my_stoi(const std::string& str)
+
+PhoneBook::PhoneBook()
+{
+	this->contacts_amount = 0;
+}
+
+PhoneBook::~PhoneBook()
+{
+}
+int PhoneBook::get_amount()
+{
+	return (this->contacts_amount);
+}
+
+// display design
+std::string formatColumn(std::string text)
+{
+	if (text.length() > 10) {
+		return text.substr(0, 9) + ".";
+	}
+	return std::string(10 - text.length(), ' ') + text;
+}
+
+// void PhoneBook::displayContacts() const {
+void PhoneBook::displayContacts()
+{
+	Contact contact;
+	int contactCount = this->get_amount();
+
+	std::cout << "|     Index|First Name| Last Name|  Nickname|" << std::endl;
+	std::cout << "|----------|----------|----------|----------|" << std::endl;
+	for (int i = 0; i < contactCount; ++i)
+	{
+		if (std::cin.eof())
+			return ;
+		contact = contacts[i];
+		std::cout<<"bla bla bla\n";
+		// std::cout << "|" << formatColumn(std::to_string(i))
+		std::ostringstream oss;
+		oss << (i + 1); // Convert integer to string
+		std::cout << "|" << formatColumn(oss.str())
+				  << "|" << formatColumn(contact.get_first_name())
+				  << "|" << formatColumn(contact.get_last_name())
+				  << "|" << formatColumn(contact.get_nickname())
+				  << "|" << std::endl;
+	}
+}
+
+// display design
+
+
+static int my_stoi(const std::string& str)
 {
 	int result = 0;
 	int sign = 1;
@@ -26,89 +76,126 @@ int my_stoi(const std::string& str)
 	}
 	for (; i < str.size(); i++)
 	{
-		ch = str[i];		
+		ch = str[i];
 		if (ch < '0' || ch > '9')
 			return 0;
 		digit = ch - '0';
-		if (result > (INT_MAX - digit) / 10)
+		if (result > (2147483647 - digit) / 10)
 			return 0;
 		result = result * 10 + digit;
 	}
 	return (sign * result);
 }
 
-// *********************
-// *********************
-PhoneBook::PhoneBook()
-{
-	this->contacts_amount = 0;
-}
-
-PhoneBook::~PhoneBook()
-{
-}
-
 void PhoneBook::add_contact(int *i)
 {
-	if ((*i) == 8)
+	if ((*i) == 2)
 		(*i) = 0;
+	// found segfault - adding second round contacts from 0 index;
 	this->contacts[(*i)].set_index((*i));
-	this->contacts[(*i)].set_first_name(edit_get_inp("Enter first name: "));
-	this->contacts[(*i)].set_last_name(edit_get_inp("Enter last name: "));
-	this->contacts[(*i)].set_nickname(edit_get_inp("Enter nickname: "));
-	this->contacts[(*i)].set_phone_number(edit_get_inp("Enter phone number: "));
-	this->contacts[(*i)].set_darkest_secret(edit_get_inp("Enter darkest secret: "));
-	if (ft_isalpha(this->contacts[(*i)].get_first_name()) && ft_isalpha(this->contacts[(*i)].get_last_name()))
+	while (1)
 	{
-		std::cout << "\033[1;31mError: Names cannot contain non-alphabetical characters!\033[0m" << std::endl;
-		return ;	
+		if (std::cin.eof())
+			return ;
+		this->contacts[(*i)].set_first_name(edit_get_inp("Enter first name: "));
+		std::cout << "aaaaaa" << std::endl;
+		if (this->contacts[(*i)].get_first_name().length() < 1)
+			continue ;
+		if (ft_isalpha(this->contacts[(*i)].get_first_name()))
+			std::cout << "\033[1;31mError: Name cannot contain non-alphabetical characters!\033[0m" << std::endl;
+		else
+			break ;
 	}
-	if (ft_isdigit(this->contacts[(*i)].get_phone_number()) == 1)
+	while (1)
 	{
-		std::cout << "\033[1;31mError: Phone number cannot contain non-numeric characters!\033[0m" << std::endl;
-		return ;
+		if (std::cin.eof())
+			return ;
+		this->contacts[(*i)].set_last_name(edit_get_inp("Enter first name: "));
+		if (this->contacts[(*i)].get_last_name().length() < 1)
+			continue ;
+		if (ft_isalpha(this->contacts[(*i)].get_last_name()))
+			std::cout << "\033[1;31mError: Last name cannot contain non-alphabetical characters!\033[0m" << std::endl;
+		else
+			break ;
+	}
+	while(1)
+	{
+		if (std::cin.eof())
+			return ;
+		this->contacts[(*i)].set_nickname(edit_get_inp("Enter nickname: "));
+		if (this->contacts[(*i)].get_nickname().length() < 1)
+			continue ;
+		else
+			break ;
+	}
+	while (1)
+	{
+		if (std::cin.eof())
+			return ;
+		this->contacts[(*i)].set_phone_number(edit_get_inp("Enter phone number: "));
+		if (this->contacts[(*i)].get_phone_number().length() < 1)
+			continue;
+		if (ft_isdigit(this->contacts[(*i)].get_phone_number()) == 1)
+			std::cout << "\033[1;31mError: Phone number cannot contain non-numeric characters!\033[0m" << std::endl;	
+		else
+			break ;
+	}
+	while(1)
+	{
+		if (std::cin.eof())
+			return ;
+		this->contacts[(*i)].set_darkest_secret(edit_get_inp("Enter darkest secret: "));
+		if (this->contacts[(*i)].get_darkest_secret().length() < 1)
+			continue ;
+		else
+			break ;
 	}
 	this->contacts_amount += 1;
 	(*i)++;
 	std::cout << "\033[1;32mContact added successfully\033[0m" << std::endl;
 }
 
-int PhoneBook::get_amount()
+
+void	PhoneBook::print_contact(int i)
 {
-	return (this->contacts_amount);
+	std::cout << "index: " << i + 1 << std::endl;
+	std::cout << "First name: " << this->contacts[i].get_first_name() << std::endl;
+	std::cout << "Last name: " << this->contacts[i].get_last_name() << std::endl;
+	std::cout << "Nickname: " << this->contacts[i].get_nickname() << std::endl;
+	std::cout << "Phone: " << this->contacts[i].get_phone_number() << std::endl;
+	std::cout << "Darkest secret: " << this->contacts[i].get_darkest_secret() << std::endl;
 }
-void PhoneBook::search_print_contact(std::string i_to_search)
+int PhoneBook::search_print_contact(std::string i_to_search)
 {
 	int index;
+	int count;
 
-	if (this->get_amount() == 0)
+	count = this->get_amount();
+	if (count == 0)
 	{
-		std::cout << "\033[1;31mYou don't have any contacts!!\033[0m" << std::endl;
-		return ;
+		std::cout << "\033[1;31mError: No contacts to display!\033[0m" << std::endl;
+		return(1) ;
 	}
-	if (i_to_search.empty() || ft_isdigit(i_to_search))
-		std::cout << "\031[1;31mInvalid index!" << std::endl;
-	index = my_stoi(i_to_search);
-	if (index > 8 || index < 1)
+	if (i_to_search.empty() || ft_isdigit(i_to_search) == 1)
 	{
-		std::cout << "\033[1;31mThe " << i_to_search << "th contact is not available. Please try a smaller number.\033[0m" << std::endl;
-		return ;
+		std::cout << "\033[1;31mError: Invalid index!\033[0m" << std::endl;
+		return(1) ;
+	}
+	try {
+		index = my_stoi(i_to_search);
+	} catch (...) {
+		std::cout << "Error: Invalid index." << std::endl;
+		return(1) ;
+	}
+	if (index > 8 || index > count || index < 1)
+	{
+		std::cout << "\033[1;31mError: Out of range.\033[0m" << std::endl;
+		return(1) ;
 	}
 	if (this->contacts[index - 1].get_first_name().size())
 	{
-		std::cout << "SUCCESS" << std::endl;
-		// this->print_contact(i_to_search[0] - 1 - '0');
-		return ;
+		this->print_contact((index - 1));
+		return (0);
 	}
+	return (1);
 }
-
-
-// void	PhoneBook::print_contact(int i)
-// {
-// 	std::cout << "index: " << i + 1;
-// 	std::cout << "first name: " << this->contacts[i].get_first_name() << std::endl;
-// 	std::cout << "last name: " << this->contacts[i].get_last_name() << std::endl;
-// 	std::cout << "nick name: " << this->contacts[i].get_nick_name() << std::endl;
-// 	std::cout << "phone number: " << this->contacts[i].get_phone_number() << std::endl;
-// 	std::cout << "darkest secret: " << this->contacts[i].get_darkest_secret() << std::endl;
-// }

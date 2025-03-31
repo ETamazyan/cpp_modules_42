@@ -37,12 +37,24 @@ int main()
 
 	while (1)
 	{
+		// uxxel funkcianerum te vorteghic ev inch erroi depqum petq a return ani ev ga while-i skizb, isk myus depqerum ughaki output-i noric tpi
+		// error-y phone number-i demqum, noric phone_numbre ptq a beri voch te return ani,
+		// search-y done 
+		if (std::cin.eof())
+			return (0);
 		cmd = edit_get_inp("Enter command: ADD | SEARCH | EXIT\n");
-		if (cmd == "ADD") // 
+		if (cmd == "ADD")
 			phonebook.add_contact(&index);
 		if (cmd == "SEARCH")
 		{
-			phonebook.search_print_contact(edit_get_inp("Enter an index\n"));
+			phonebook.displayContacts();
+			std::cout<<"fghfhg\n";
+			while (phonebook.search_print_contact(edit_get_inp("Enter an index\n")) == 1)
+			{
+				if (std::cin.eof())
+					return (0);
+				continue;
+			}
 		}
 		if (cmd == "EXIT")
 		{
