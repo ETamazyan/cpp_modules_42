@@ -49,7 +49,7 @@ int main()
 		{
 			phonebook.displayContacts();
 			std::cout<<"fghfhg\n";
-			while (phonebook.search_print_contact(edit_get_inp("Enter an index\n")) == 1)
+			while (phonebook.search_print_contact(edit_get_inp("Please enter an index, or press Enter to go back.\n")) == 1)
 			{
 				if (std::cin.eof())
 					return (0);

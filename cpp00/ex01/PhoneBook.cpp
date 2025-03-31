@@ -33,24 +33,21 @@ std::string formatColumn(std::string text)
 // void PhoneBook::displayContacts() const {
 void PhoneBook::displayContacts()
 {
-	Contact contact;
-	int contactCount = this->get_amount();
+	// Contact contact;
 
+
+	int contactCount = this->get_amount();
+	std::cout << contactCount << std::endl;
 	std::cout << "|     Index|First Name| Last Name|  Nickname|" << std::endl;
 	std::cout << "|----------|----------|----------|----------|" << std::endl;
 	for (int i = 0; i < contactCount; ++i)
 	{
 		if (std::cin.eof())
 			return ;
-		contact = contacts[i];
-		std::cout<<"bla bla bla\n";
-		// std::cout << "|" << formatColumn(std::to_string(i))
-		std::ostringstream oss;
-		oss << (i + 1); // Convert integer to string
-		std::cout << "|" << formatColumn(oss.str())
-				  << "|" << formatColumn(contact.get_first_name())
-				  << "|" << formatColumn(contact.get_last_name())
-				  << "|" << formatColumn(contact.get_nickname())
+		std::cout << "|" << std::setw(10) << (i + 1)
+				  << "|" << formatColumn(this->contacts[i].get_first_name())
+				  << "|" << formatColumn(this->contacts[i].get_last_name())
+				  << "|" << formatColumn(this->contacts[i].get_nickname())
 				  << "|" << std::endl;
 	}
 }
@@ -89,16 +86,14 @@ static int my_stoi(const std::string& str)
 
 void PhoneBook::add_contact(int *i)
 {
-	if ((*i) == 2)
+	if ((*i) == MAX_CONTACTS)
 		(*i) = 0;
 	// found segfault - adding second round contacts from 0 index;
-	this->contacts[(*i)].set_index((*i));
 	while (1)
 	{
 		if (std::cin.eof())
 			return ;
 		this->contacts[(*i)].set_first_name(edit_get_inp("Enter first name: "));
-		std::cout << "aaaaaa" << std::endl;
 		if (this->contacts[(*i)].get_first_name().length() < 1)
 			continue ;
 		if (ft_isalpha(this->contacts[(*i)].get_first_name()))
@@ -110,7 +105,7 @@ void PhoneBook::add_contact(int *i)
 	{
 		if (std::cin.eof())
 			return ;
-		this->contacts[(*i)].set_last_name(edit_get_inp("Enter first name: "));
+		this->contacts[(*i)].set_last_name(edit_get_inp("Enter last name: "));
 		if (this->contacts[(*i)].get_last_name().length() < 1)
 			continue ;
 		if (ft_isalpha(this->contacts[(*i)].get_last_name()))
@@ -150,7 +145,9 @@ void PhoneBook::add_contact(int *i)
 		else
 			break ;
 	}
-	this->contacts_amount += 1;
+	this->contacts[(*i)].set_index((*i));
+	if (this->contacts_amount < MAX_CONTACTS)
+		this->contacts_amount += 1;
 	(*i)++;
 	std::cout << "\033[1;32mContact added successfully\033[0m" << std::endl;
 }
@@ -176,11 +173,13 @@ int PhoneBook::search_print_contact(std::string i_to_search)
 		std::cout << "\033[1;31mError: No contacts to display!\033[0m" << std::endl;
 		return(1) ;
 	}
-	if (i_to_search.empty() || ft_isdigit(i_to_search) == 1)
+	if (ft_isdigit(i_to_search) == 1)
 	{
 		std::cout << "\033[1;31mError: Invalid index!\033[0m" << std::endl;
 		return(1) ;
 	}
+	if (i_to_search.empty())
+		return (0);
 	try {
 		index = my_stoi(i_to_search);
 	} catch (...) {

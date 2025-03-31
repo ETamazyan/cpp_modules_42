@@ -3,6 +3,7 @@
 
 #include "Contact.hpp"
 
+# define MAX_CONTACTS 2
 class	PhoneBook
 {
 	public:
@@ -17,7 +18,7 @@ class	PhoneBook
 		// std::string formatColumn(const std::string &text);
 		private:
 		int contacts_amount;
-		Contact contacts[2];
+		Contact contacts[MAX_CONTACTS];
 };
 
 #endif
