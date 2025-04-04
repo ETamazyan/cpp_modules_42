@@ -11,7 +11,8 @@ public:
 	void announce(void); // announce themselves as follows BraiiiiiiinnnzzzZ...
 	void set_name(std::string name);
 	std::string get_name();
-	private:
+
+private:
 	std::string name;
 };
 
