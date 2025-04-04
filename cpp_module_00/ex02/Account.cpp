@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   Account.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elen_t13 <elen_t13@student.42.fr>          +#+  +:+       +#+        */
+/*   By: etamazya <etamazya@student.42yerevan.am    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:37:06 by elen_t13          #+#    #+#             */
-/*   Updated: 2025/04/03 23:11:26 by elen_t13         ###   ########.fr       */
+/*   Updated: 2025/04/04 09:53:26 by etamazya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
 #include <iostream>
-#include <iomanip>
+#include <ctime> // std::time, std::tm, and std::localtime
+
 
 
 // 	static int _nbAccounts;
@@ -25,7 +26,6 @@ int Account::_totalNbWithdrawals = 0;
 
 Account::Account(int initial_deposit) 
 {
-	// *** CHECK THIIIS ***
 	this->_displayTimestamp();
 	this->_accountIndex = _nbAccounts++;
 	this->_amount = initial_deposit;
@@ -37,7 +37,6 @@ Account::Account(int initial_deposit)
 
 Account::~Account(void)
 {
-	// *** CHECK THIIIS ***
 	this->_displayTimestamp();
 	std::cout<<"index:"<<this->_accountIndex<<";amount:"<<this->_amount<<";closed"<<std::endl;
 }
@@ -60,8 +59,8 @@ int Account::getNbWithdrawals(void)
 }
 void	Account::_displayTimestamp( void )
 {
-	std::time_t t = std::time(nullptr);
-	std::tm* now = std::localtime(&t);
+	std::time_t t = std::time(NULL);
+	std::tm* now = std::localtime(&t); // check later - struct tm* now = std::localtime(&t);
 	std::cout<<"["<<now->tm_year + 1900;
 	if (now->tm_mon + 1 < 10)
 		std::cout<<"0";

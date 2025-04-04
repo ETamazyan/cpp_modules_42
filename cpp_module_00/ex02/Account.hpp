@@ -19,16 +19,16 @@ class Account
 {
 
 public:
-	typedef Account t; //✅
+	typedef Account t;
 
-	static int getNbAccounts(void); // ✅
-	static int getTotalAmount(void); // ✅
-	static int getNbDeposits(void); // ✅
-	static int getNbWithdrawals(void); // ✅
-	static void displayAccountsInfos(void); // ✅
+	static int getNbAccounts(void);
+	static int getTotalAmount(void);
+	static int getNbDeposits(void);
+	static int getNbWithdrawals(void);
+	static void displayAccountsInfos(void);
 
-	Account(int initial_deposit); // ❌
-	~Account(void); // ❌
+	Account(int initial_deposit);
+	~Account(void);
 
 	void makeDeposit(int deposit);
 	bool makeWithdrawal(int withdrawal);
