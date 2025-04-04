@@ -1,7 +1,7 @@
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
-int	ft_isalpha(std::string chr)
+int ft_isalpha(std::string chr)
 {
 	for (int i = 0; chr[i]; i++)
 	{
@@ -11,7 +11,7 @@ int	ft_isalpha(std::string chr)
 	return (0);
 }
 
-int	ft_isdigit(const std::string num)
+int ft_isdigit(const std::string num)
 {
 	for (int i = 0; num[i]; i++)
 	{
@@ -37,19 +37,15 @@ int main()
 
 	while (1)
 	{
-		// uxxel funkcianerum te vorteghic ev inch erroi depqum petq a return ani ev ga while-i skizb, isk myus depqerum ughaki output-i noric tpi
-		// error-y phone number-i demqum, noric phone_numbre ptq a beri voch te return ani,
-		// search-y done 
 		if (std::cin.eof())
 			return (0);
 		cmd = edit_get_inp("Enter command: ADD | SEARCH | EXIT\n");
 		if (cmd == "ADD")
-			phonebook.add_contact(&index);
+			phonebook.addContact(&index);
 		if (cmd == "SEARCH")
 		{
 			phonebook.displayContacts();
-			std::cout<<"fghfhg\n";
-			while (phonebook.search_print_contact(edit_get_inp("Please enter an index, or press Enter to go back.\n")) == 1)
+			while (phonebook.searchPrintContact(edit_get_inp("Please enter an index, or press Enter to go back.\n")) == 1)
 			{
 				if (std::cin.eof())
 					return (0);
@@ -59,8 +55,10 @@ int main()
 		if (cmd == "EXIT")
 		{
 			std::cout << "Exit" << std::endl;
-			break ;
+			break;
 		}
 	}
+	// Contact ob;
+	// ob.sov();
 	return (0);
 }
