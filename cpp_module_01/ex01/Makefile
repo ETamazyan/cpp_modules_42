@@ -14,7 +14,7 @@ OBJS = $(SRCS:%.cpp=$(OBJ_DIR)%.o)
 
 all: $(NAME)
 
-$(OBJ_DIR)%.o: %.cpp $(HEADERS)
+$(OBJ_DIR)%.o: %.cpp Makefile $(INCS)
 	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
