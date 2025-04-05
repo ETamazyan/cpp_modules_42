@@ -2,7 +2,7 @@ CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 
-NAME = Brain
+NAME = brain
 
 SRCS = main.cpp
 
