@@ -3,37 +3,79 @@
 
 void Harl::complain(std::string level)
 {
-	void (Harl::*complaints_ptr[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
-	std::string arr_levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+    void (Harl::*complaints_ptr[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+    std::string arr_levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
-	int i;
-	for (i = 0; i < 4; ++i)
-	{
-		if (level == arr_levels[i])
-		{
-			break;
-		}
-	}
-	switch (i)
-	{
-		case 0:
-			(this->*complaints_ptr[0])();
-			std::cout << std::endl;
-		case 1:
-			(this->*complaints_ptr[1])();
-			std::cout << std::endl;
-		case 2:
-			(this->*complaints_ptr[2])();
-			std::cout << std::endl;
-		case 3:
-			(this->*complaints_ptr[3])();
-			std::cout << std::endl;
-			break ;
-		default:
-			std::cout << "Are you even trying? Because this is not working!" << std::endl;
-			exit(1);
-	}
+    int i;
+    for (i = 0; i < 4; ++i)
+    {
+        if (level == arr_levels[i])
+        {
+            break;
+        }
+    }
+    switch (i)
+    {
+        case 0:
+            (this->*complaints_ptr[0])();
+            std::cout << std::endl;
+            // intentional fallthrough
+        case 1:
+            (this->*complaints_ptr[1])();
+            std::cout << std::endl;
+            // intentional fallthrough
+        case 2:
+            (this->*complaints_ptr[2])();
+            std::cout << std::endl;
+            // intentional fallthrough
+        case 3:
+            (this->*complaints_ptr[3])();
+            std::cout << std::endl;
+            break ;  // This break will stop the fallthrough after case 3
+        default:
+            std::cout << "Are you even trying? Because this is not working!" << std::endl;
+            exit(1);
+    }
 }
+
+
+
+// void Harl::complain(std::string level)
+// {
+// 	void (Harl::*complaints_ptr[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+// 	std::string arr_levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+
+// 	int i;
+// 	for (i = 0; i < 4; ++i)
+// 	{
+// 		if (level == arr_levels[i])
+// 		{
+// 			break;
+// 		}
+// 	}
+// 	switch (i)
+// 	{
+// 		case 0:
+// 			(this->*complaints_ptr[0])();
+// 			std::cout << std::endl;
+// 			// fallthrough;
+// 		case 1:
+// 			(this->*complaints_ptr[1])();
+// 			std::cout << std::endl;
+// 			// fallthrough;
+// 		case 2:
+// 			(this->*complaints_ptr[2])();
+// 			std::cout << std::endl;
+// 			// fallthrough;
+// 		case 3:
+// 			(this->*complaints_ptr[3])();
+// 			std::cout << std::endl;
+// 			break ;
+// 		default:
+// 			std::cout << "Are you even trying? Because this is not working!" << std::endl;
+// 			exit(1);
+// 	}
+// }
 
 void Harl::debug(void)
 {
