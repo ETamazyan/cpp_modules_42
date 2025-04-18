@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Account.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etamazya <etamazya@student.42yerevan.am    +#+  +:+       +#+        */
+/*   By: elen_t13 <elen_t13@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 17:37:06 by elen_t13          #+#    #+#             */
-/*   Updated: 2025/04/04 09:53:26 by etamazya         ###   ########.fr       */
+/*   Updated: 2025/04/18 21:46:54 by elen_t13         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	Account::_displayTimestamp( void )
 {
 	std::time_t t = std::time(NULL);
 	std::tm* now = std::localtime(&t); // check later - struct tm* now = std::localtime(&t);
-	std::cout<<"["<<now->tm_year + 1900;
+	std::cout<<"["<<now->tmm_year + 1900;
 	if (now->tm_mon + 1 < 10)
 		std::cout<<"0";
 	std::cout<<now->tm_mon + 1;
