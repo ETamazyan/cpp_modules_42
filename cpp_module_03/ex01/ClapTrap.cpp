@@ -7,12 +7,12 @@ ClapTrap::ClapTrap()
 	this->m_energy_points = 10;
 	this->m_attack_damage = 0;
 
-	std::cout << "Default constructor has been called" << std::endl;
+	std::cout << "СlapTrap default constructor has been called" << std::endl;
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "Destructor has been called" << std::endl;
+	std::cout << "СlapTrap destructor has been called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name)
@@ -22,7 +22,7 @@ ClapTrap::ClapTrap(std::string name)
 	this->m_energy_points = 10;
 	this->m_attack_damage = 0;
 
-	std::cout << "Parameterized constructor has been called" << std::endl;
+	std::cout << "СlapTrap parameterized constructor has been called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &rhs)
@@ -32,7 +32,7 @@ ClapTrap::ClapTrap(const ClapTrap &rhs)
 	this->m_energy_points = rhs.m_energy_points;
 	this->m_attack_damage = rhs.m_attack_damage;
 
-	std::cout << "Copy constructor has been called" << std::endl;
+	std::cout << "СlapTrap copy constructor has been called" << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &rhs)

@@ -1,12 +1,13 @@
 CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
+#-Wshadow and -Wno-shadow compiler flags
 
-NAME = 
+NAME = serenaMyLove
 
-INCS = 
+INCS = ClapTrap.hpp ScavTrap.hpp
 
-SRCS = 
+SRCS = ClapTrap.cpp main.cpp ScavTrap.cpp
 
 OBJ_DIR = objects/
 
