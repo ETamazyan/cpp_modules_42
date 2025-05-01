@@ -1,13 +1,13 @@
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
 #-Wshadow and -Wno-shadow compiler flags
 
-NAME = repetitiveWork
+NAME = abstractClass
 
-INCS = ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
+INCS = AAnimal.hpp Dog.hpp Cat.hpp Brain.hpp WrongAnimal.hpp WrongCat.hpp
 
-SRCS = ClapTrap.cpp main.cpp ScavTrap.cpp FragTrap.cpp
+SRCS = main.cpp AAnimal.cpp Dog.cpp Cat.cpp Brain.cpp WrongAnimal.cpp WrongCat.cpp
 
 OBJ_DIR = objects/
 

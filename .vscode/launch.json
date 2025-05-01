@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/elen_t13/projects/cpp_modules_42/cpp_module_01/ex00",
-      "program": "/home/elen_t13/projects/cpp_modules_42/cpp_module_01/ex00/build/Debug/outDebug",
+      "cwd": "/home/elen_t13/cpp_modules_42/cpp_module_04/ex00_fake",
+      "program": "/home/elen_t13/cpp_modules_42/cpp_module_04/ex00_fake/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

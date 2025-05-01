@@ -1,21 +1,24 @@
-#include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
-#include <iostream>
 
 int main()
 {
-    std::cout << "--- Creating Dog and Cat objects ---\n" << std::endl;
-    const Animal* dog = new Dog();
-    const Animal* cat = new Cat();
+	Animal animal;
+	animal.makeSound();
+	std::cout << "--- Creating Dog and Cat objects ---\n"
+			  << std::endl;
+	const Animal *dog = new Dog();
+	const Animal *cat = new Cat();
 
-    std::cout << "\n--- Making sounds ---\n" << std::endl;
-    dog->makeSound();
-    cat->makeSound();
+	std::cout << "\n--- Making sounds ---\n"
+			  << std::endl;
+	dog->makeSound();
+	cat->makeSound();
 
-    std::cout << "\n--- Deleting animals ---\n" << std::endl;
-    delete dog;
-    delete cat;
+	std::cout << "\n--- Deleting animals ---\n"
+			  << std::endl;
+	delete dog;
+	delete cat;
 
-    return 0;
+	return (0);
 }
