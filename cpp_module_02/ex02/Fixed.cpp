@@ -59,101 +59,120 @@ int Fixed::toInt(void) const
 	return this->num >> this->fractional_bits;
 }
 
-
-
-
 // ******************************************
 // ***** TAKE CARE ABOUT THE FOLLOWING ******
 // ******************************************
 
-bool	Fixed::operator>(Fixed fixed) const {
+bool Fixed::operator>(Fixed fixed) const
+{
 	return this->toFloat() > fixed.toFloat();
 }
 
-bool	Fixed::operator>=(Fixed fixed) const {
+bool Fixed::operator>=(Fixed fixed) const
+{
 	return this->toFloat() >= fixed.toFloat();
 }
 
-bool	Fixed::operator<(Fixed fixed) const {
+bool Fixed::operator<(Fixed fixed) const
+{
 	return this->toFloat() < fixed.toFloat();
 }
 
-bool	Fixed::operator<=(Fixed fixed) const {
+bool Fixed::operator<=(Fixed fixed) const
+{
 	return this->toFloat() <= fixed.toFloat();
 }
 
-bool	Fixed::operator==(Fixed fixed) const {
+bool Fixed::operator==(Fixed fixed) const
+{
 	return this->toFloat() == fixed.toFloat();
 }
 
-bool	Fixed::operator!=(Fixed fixed) const {
+bool Fixed::operator!=(Fixed fixed) const
+{
 	return this->toFloat() != fixed.toFloat();
 }
 
-const Fixed	Fixed::operator+(Fixed fixed) const {
+const Fixed Fixed::operator+(Fixed fixed) const
+{
 	return this->toFloat() + fixed.toFloat();
 }
 
-const Fixed	Fixed::operator-(Fixed fixed) const {
+const Fixed Fixed::operator-(Fixed fixed) const
+{
 	return this->toFloat() - fixed.toFloat();
 }
 
-const Fixed	Fixed::operator/(Fixed fixed) const {
+const Fixed Fixed::operator/(Fixed fixed) const
+{
 	return this->toFloat() / fixed.toFloat();
 }
 
-const Fixed	Fixed::operator*(Fixed fixed) const {
+const Fixed Fixed::operator*(Fixed fixed) const
+{
 	return this->toFloat() * fixed.toFloat();
 }
 
-Fixed& Fixed::operator++() {
+Fixed &Fixed::operator++()
+{
 	this->num++;
 	return (*this);
 }
 
-Fixed& Fixed::operator--() {
+Fixed &Fixed::operator--()
+{
 	this->num--;
 	return (*this);
 }
 
-const Fixed Fixed::operator++(int) {
+const Fixed Fixed::operator++(int)
+{
 	Fixed tmp = *this;
 	++this->num;
 	return tmp;
 }
 
-const Fixed Fixed::operator--(int) {
+const Fixed Fixed::operator--(int)
+{
 	Fixed tmp = *this;
 	--this->num;
 	return tmp;
 }
 
-Fixed &Fixed::min(Fixed &first, Fixed &second) {
-	if (first.toFloat() <= second.toFloat()) {
+Fixed &Fixed::min(Fixed &first, Fixed &second)
+{
+	if (first.toFloat() <= second.toFloat())
+	{
 		return first;
 	}
 
 	return second;
 }
 
-const Fixed &Fixed::min(Fixed const &first, Fixed const &second) {
-	if (first.toFloat() <= second.toFloat()) {
+const Fixed &Fixed::min(Fixed const &first, Fixed const &second)
+{
+	if (first.toFloat() <= second.toFloat())
+	{
 		return first;
 	}
 
 	return second;
 }
 
-Fixed &Fixed::max(Fixed &first, Fixed &second) {
-	if (first.toFloat() >= second.toFloat()) {
+Fixed &Fixed::max(Fixed &first, Fixed &second)
+{
+	if (first.toFloat() >= second.toFloat())
+	{
 		return first;
 	}
 
 	return second;
 }
 
-const Fixed &Fixed::max(Fixed const &first, Fixed const &second) {
-	if (first.toFloat() >= second.toFloat()) {
+const Fixed &Fixed::max(Fixed const &first, Fixed const &second)
+{
+	if (first.toFloat() >= second.toFloat())
+	{
 		return first;
 	}
 
