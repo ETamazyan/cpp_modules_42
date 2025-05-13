@@ -12,12 +12,6 @@ Fixed::Fixed(const Fixed &fixed)
 	std::cout << "Copy constructor" << std::endl;
 }
 
-Fixed::~Fixed()
-{
-	// std::cout << "Verjin xosq" << std::endl;
-	std::cout << "Destructor called" << std::endl;
-}
-
 Fixed &Fixed::operator=(const Fixed &fixed)
 {
 	if (this == &fixed)
@@ -37,4 +31,10 @@ void Fixed::setRawBits(int const raw)
 {
 	std::cout << "setRawBits member function called" << std::endl;
 	this->num = raw;
+}
+
+Fixed::~Fixed()
+{
+	// std::cout << "Verjin xosq" << std::endl;
+	std::cout << "Destructor called" << std::endl;
 }

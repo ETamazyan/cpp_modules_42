@@ -1,6 +1,7 @@
 #include <iostream>
 
 // using namespace std;
+// using std;
 void	to_upper_case(char *str)
 {
 	int i;

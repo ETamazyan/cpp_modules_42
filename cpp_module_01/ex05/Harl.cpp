@@ -10,7 +10,7 @@ void Harl::complain(std::string level)
 	{
 		if (level == arr_levels[i])
 		{
-			std::cout << level << std::endl; // keeeeeeeeeeeeeeep thiiiiiiiiiiiiiiiis
+			std::cout << level << std::endl; // keeeep thiiis
 			(this->*complaints_ptr[i])();
 			return ;
 		}

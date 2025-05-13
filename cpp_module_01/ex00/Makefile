@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 
 NAME = BraiiiiiiinnnzzzZ
 
-INCS = Zombie.hpp # <- use this 
+INCS = Zombie.hpp
 
 SRCS = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 

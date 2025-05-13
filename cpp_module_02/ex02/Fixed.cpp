@@ -26,10 +26,6 @@ Fixed::Fixed(const Fixed &fixed)
 	*this = fixed;
 }
 
-Fixed::~Fixed()
-{
-}
-
 Fixed &Fixed::operator=(const Fixed &rhs)
 {
 	if (this != &rhs)
@@ -57,6 +53,11 @@ float Fixed::toFloat(void) const
 int Fixed::toInt(void) const
 {
 	return this->num >> this->fractional_bits;
+}
+
+
+Fixed::~Fixed()
+{
 }
 
 // ******************************************

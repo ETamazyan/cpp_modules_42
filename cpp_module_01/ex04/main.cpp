@@ -41,7 +41,6 @@ int main(int argc, char *argv[])
 	std::ifstream inputFile(filename.c_str()); // opening file
 	if (!inputFile)
 		std::cout << "Failed to open file: " << filename << std::endl;
-
 	newFileName = filename + ".replace";
 	std::ofstream outputFile(newFileName.c_str()); // writing in file
 	if (!outputFile)
@@ -60,3 +59,5 @@ int main(int argc, char *argv[])
 	outputFile.close();
 	return (0);
 }
+
+int main(arg)

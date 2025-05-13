@@ -4,14 +4,12 @@ Zombie::Zombie(std::string name)
 {
 	this->name = name;
 
-	std::cout << "The Zombie constructor has been called" << std::endl; 
-
+	std::cout << "The Zombie constructor has been called" << std::endl;
 	return ;
 }
 Zombie::~Zombie()
 {
 	std::cout << "Destructor defeated the Zombie named \033[1m" << this->name << "\033[0m" << std::endl;
-	
 	return ;
 }
 

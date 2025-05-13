@@ -1,6 +1,6 @@
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
 
 NAME = towardsaMoreUsefulFixedPointNumberClass
 
@@ -24,7 +24,6 @@ $(NAME): $(OBJS)
 clean:
 	@$(RM) -rf $(OBJ_DIR) 
 
-# $(RM) flexible for other platforms too
 fclean: clean
 	@$(RM) -rf $(NAME)
 
