@@ -1,4 +1,5 @@
 #include "ScavTrap.hpp"
+#include <climits>
 
 int main()
 {
@@ -27,6 +28,8 @@ int main()
 	std::cout << "\n=== ScavTrap Energy Exhaustion ===\n";
 	for (int i = 0; i < 51; ++i)
 	{
+		if (i< 10)
+			std::cout << "0";
 		std::cout << i << " ";
 		serena.attack("Dummy"); // Should stop at 50
 	}

@@ -1,42 +1,56 @@
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
+#include <climits>
 
 int main()
 {
-	std::cout << "=== FragTrap Constructor Test ===" << std::endl;
-	FragTrap frag1("Fraggie");
-	FragTrap frag2("Boomer");
+	DiamondTrap pers(std::string("Tika"));
 
-	std::cout << "\n=== FragTrap Attack Test ===" << std::endl;
-	frag1.attack("Boomer");
+	DiamondTrap chlp(pers);
+	DiamondTrap agu(std::string("Tyoma"));
+	DiamondTrap chad("Gigachad");
 
-	std::cout << "\n=== FragTrap Damage Test ===" << std::endl;
-	frag2.takeDamage(40);
+	agu = chlp;
 
-	std::cout << "\n=== FragTrap Repair Test ===" << std::endl;
-	frag2.beRepaired(20);
-
-	std::cout << "\n=== FragTrap High Fives Test ===" << std::endl;
-	frag1.highFivesGuys();
-
-	std::cout << "\n=== FragTrap Energy Drain Test ===" << std::endl;
-	for (int i = 0; i < 101; ++i)
+	for (int i = 0; i < 15; i++)
 	{
-		frag1.attack("Dummy");
+		agu.takeDamage(UINT_MAX);
+		agu.attack("Atika");
+		agu.beRepaired(2);
+		agu.highFivesGuys();
+		chad.takeDamage(1);
+		chad.attack("Atika");
+		chad.beRepaired(1);
+		chad.highFivesGuys();
 	}
-
-	std::cout << "\n=== FragTrap Zero HP Test ===" << std::endl;
-	frag2.takeDamage(100);	// Should reduce HP to 0
-	frag2.attack("Anyone"); // Should fail
-	frag2.beRepaired(10);	// Should also fail
-
-	std::cout << "\n=== FragTrap Overkill Damage Test ===" << std::endl;
-	frag1.takeDamage(999); // Way more than needed
-
-	std::cout << "\n=== FragTrap Copy/Assignment Test ===" << std::endl;
-	FragTrap fragCopy(frag2);
-	FragTrap fragAssigned = frag1;
-
-	std::cout << "\n=== FragTrap Destructor Call ===" << std::endl;
+	chad.whoAmI();
 	return 0;
 }
+
+// int main()
+// {
+// 	DiamondTrap diamond1("DiamondOne");
+// 	DiamondTrap diamond2("DiamondTwo");
+// 	diamond1.attack("DiamondTwo");
+// 	diamond2.takeDamage(30);
+// 	diamond2.beRepaired(20);
+// 	diamond1.whoAmI();
+// 	for (int i = 0; i < 51; ++i)
+// 	{
+// 		if (i < 10)
+// 			std::cout << "0";
+// 		std::cout << i << " ";
+// 		diamond1.attack("TrainingDummy");
+// 	}
+
+// 	std::cout << "\n=== DiamondTrap Zero HP Test ===" << std::endl;
+// 	diamond2.takeDamage(100);  // Reduce HP to 0
+// 	diamond2.attack("Nobody"); // Should fail
+// 	diamond2.beRepaired(10);   // Should also fail
+
+// 	std::cout << "\n=== DiamondTrap Overkill Damage Test ===" << std::endl;
+// 	diamond1.takeDamage(999); // More than enough to reduce HP to 0
+// 	DiamondTrap diamondCopy(diamond2);
+// 	DiamondTrap diamondAssigned = diamond1;
+
+// 	return 0;
+// }

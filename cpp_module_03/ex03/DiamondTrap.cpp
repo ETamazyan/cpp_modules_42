@@ -1,44 +1,50 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap() : ClapTrap("Unknown_clap__name"), ScavTrap(), FragTrap(100, 30), _name("Unknown")
+DiamondTrap::DiamondTrap() : ClapTrap("Default_clap_name"), _name("Default")
 {
- std::cout<<"DiamondTrap "<< this->_name <<" was created! (default ctor)\n";
+	_hit_points = 100;   // from FragTrap
+	_energy_points = 50; // from ScavTrap
+	_attack_damage = 30; // from FragTrap
+	std::cout << "DiamondTrap default constructor called\n";
 }
 
-DiamondTrap::~DiamondTrap()
+DiamondTrap::DiamondTrap(const std::string &name)
+	: ClapTrap(name + "_clap_name"), ScavTrap(), FragTrap(), _name(name)
 {
- std::cout<<"DiamondTrap "<< this->_name <<" was destructed!\n";
+	_hit_points = 100;
+	_energy_points = 50;
+	_attack_damage = 30;
+	std::cout << "DiamondTrap name constructor called\n";
 }
 
-DiamondTrap::DiamondTrap(std::string _name) : ClapTrap(_name + "_clap__name"), ScavTrap(), FragTrap(100, 30)
+DiamondTrap::DiamondTrap(const DiamondTrap &other) : ClapTrap(other), ScavTrap(other), FragTrap(other)
 {
- this->_name = _name;
- std::cout<<"DiamondTrap "<< _name <<" was created! (ctor w/params)\n";
+	*this = other;
+	std::cout << "DiamondTrap copy constructor called\n";
 }
 
-DiamondTrap::DiamondTrap(DiamondTrap& diamondtrap)
+DiamondTrap &DiamondTrap::operator=(const DiamondTrap &other)
 {
- this->_name = diamondtrap._name;
- this->_hit_points = diamondtrap._hit_points;
- this->_energy_points = diamondtrap._energy_points;
- this->_attack_damage = diamondtrap._attack_damage;
- std::cout<<"DiamondTrap "<< this->_name <<" was created! (copy ctor)\n";
-}
-
-DiamondTrap &DiamondTrap::operator=(const DiamondTrap &diamondtrap)
-{
- if (this == &diamondtrap)
-  return *this;
- std::cout<<"DiamondTrap copy assignment operator called!\n";
- this->_name = diamondtrap._name;
- this->_hit_points = diamondtrap._hit_points;
- this->_energy_points = diamondtrap._energy_points;
- this->_attack_damage = diamondtrap._attack_damage;
- return *this;
+	if (this != &other)
+	{
+		ClapTrap::operator=(other);
+		_name = other._name;
+	}
+	std::cout << "DiamondTrap copy assignment operator called\n";
+	return *this;
 }
 
 void DiamondTrap::whoAmI()
 {
- std::cout<<"DiamondTrap's _name is: "<<this->_name<<std::endl;
- std::cout<<"ClapTrap's _name is: "<< ClapTrap::_name<<std::endl;
+	std::cout << "I am " << _name << ", and my ClapTrap name is " << ClapTrap::_name << "\n";
+}
+
+void DiamondTrap::attack(const std::string &target)
+{
+	ScavTrap::attack(target);
+}
+
+DiamondTrap::~DiamondTrap()
+{
+	std::cout << "DiamondTrap destructor called\n";
 }

@@ -3,11 +3,11 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 #-Wshadow and -Wno-shadow compiler flags
 
-NAME = repetitiveWork
+NAME = nowItisWeird
 
-INCS = ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
+INCS = ClapTrap.hpp ScavTrap.hpp FragTrap.hpp DiamondTrap.hpp
 
-SRCS = ClapTrap.cpp main.cpp ScavTrap.cpp FragTrap.cpp
+SRCS = ClapTrap.cpp main.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 
 OBJ_DIR = objects/
 
