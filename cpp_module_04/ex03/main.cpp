@@ -36,32 +36,58 @@
 // }
 
 
+// int main()
+// {
+// 	IMateriaSource *src = new MateriaSource();
+// 	src->learnMateria(new Ice());
+// 	src->learnMateria(new Cure());
+
+// 	ICharacter *alice = new Character("Alice");
+// 	AMateria *tmp;
+// 	tmp = src->createMateria("ice");
+// 	alice->equip(tmp);
+// 	tmp = src->createMateria("cure");
+// 	alice->equip(tmp);
+// 	tmp = src->createMateria("cure");
+// 	alice->equip(tmp);
+
+// 	ICharacter *copy = new Character(*dynamic_cast<Character *>(alice));
+// 	std::cout << "Testing deep copy of Character:" << std::endl;
+// 	copy->use(0, *alice);
+// 	copy->use(1, *alice);
+// 	alice->use(0, *alice);
+// 	alice->use(1, *alice);
+// 	// std::cout << alice->getMateria(0) << " " << copy->getMateria(0) << std::endl;
+
+// 	delete copy;
+// 	delete alice;
+// 	delete src;
+// 	//	main_a();
+// 	return 0;
+// }
+
 int main()
 {
-	IMateriaSource *src = new MateriaSource();
+	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
-
-	ICharacter *alice = new Character("Alice");
-	AMateria *tmp;
+	ICharacter* me = new Character("me");
+	AMateria* tmp;
 	tmp = src->createMateria("ice");
-	alice->equip(tmp);
+	me->equip(tmp);
 	tmp = src->createMateria("cure");
-	alice->equip(tmp);
-	tmp = src->createMateria("cure");
-	alice->equip(tmp);
+	me->equip(tmp);
+	ICharacter* bob = new Character("bob");
+	me->use(0, *bob);
+	me->use(1, *bob);
 
-	ICharacter *copy = new Character(*dynamic_cast<Character *>(alice));
-	std::cout << "Testing deep copy of Character:" << std::endl;
-	copy->use(0, *alice);
-	copy->use(1, *alice);
-	alice->use(0, *alice);
-	alice->use(1, *alice);
-	// std::cout << alice->getMateria(0) << " " << copy->getMateria(0) << std::endl;
-
-	delete copy;
-	delete alice;
+	tmp = src->createMateria("ice");
+	bob->equip(tmp);
+	*bob = *me;
+	delete bob;
+	delete tmp;
+	delete me;
 	delete src;
-	//	main_a();
+	// system("leaks game");
 	return 0;
 }

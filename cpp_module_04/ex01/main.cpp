@@ -17,8 +17,8 @@ int main()
 
 	std::cout << "\n--- Deleting animals ---\n"
 			  << std::endl;
+
 	delete dog;
 	delete cat;
-
 	return (0);
 }
