@@ -1,12 +1,12 @@
 CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
-#$> clang++ -W -Wall -Werror *.cpp
-NAME = cppppp
 
-INCS = AMateria.hpp  Character.hpp  Cure.hpp  ICharacter.hpp  IMateriaSource.hpp  Ice.hpp  MateriaSource.hpp
+NAME = bureaucrat
 
-SRCS = AMateria.cpp  Character.cpp  Cure.cpp  Ice.cpp  MateriaSource.cpp  main.cpp
+INCS = Bureaucrat.hpp
+
+SRCS = Bureaucrat.cpp main.cpp
 
 OBJ_DIR = objects/
 
