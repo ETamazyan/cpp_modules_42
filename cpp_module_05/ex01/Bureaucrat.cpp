@@ -1,7 +1,7 @@
 #include "Bureaucrat.hpp"
 
 // Default ctor with default values
-Bureaucrat::Bureaucrat() : name("default"), grade(150) {}
+Bureaucrat::Bureaucrat() : name("Default"), grade(150) {}
 
 // Parameterized ctor
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : name(name)
@@ -20,7 +20,6 @@ Bureaucrat::Bureaucrat(const Bureaucrat &other) : name(other.name), grade(other.
 		throw GradeTooHighException();
 	if (grade > 150)
 		throw GradeTooLowException();
-	std::cout << "Bureaucrat copy ctor called!\n";
 }
 
 // Assignment operator
