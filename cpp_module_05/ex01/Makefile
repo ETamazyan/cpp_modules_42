@@ -2,7 +2,7 @@ CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
 
-NAME = formUpMaggots
+NAME = FormUpMaggots
 
 INCS = Bureaucrat.hpp Form.hpp
 
