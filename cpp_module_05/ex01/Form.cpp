@@ -7,13 +7,12 @@ Form::Form() : name("Default"), is_signed(false), sign_grade(150), execute_grade
 
 // Parameterized ctor
 Form::Form(const std::string &name, bool is_signed, const int sign_grade, const int execute_grade)
-	: name(name), is_signed(false), sign_grade(sign_grade), execute_grade(execute_grade)
+	: name(name), is_signed(is_signed), sign_grade(sign_grade), execute_grade(execute_grade)
 {
 	if (execute_grade < 1 || sign_grade < 1)
 		throw GradeTooHighException();
 	if (execute_grade > 150 || sign_grade > 150)
 		throw GradeTooLowException();
-	is_signed = false; // just to compile
 }
 
 // Copy ctor
