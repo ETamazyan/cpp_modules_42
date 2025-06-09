@@ -68,6 +68,21 @@ void Bureaucrat::decrement_grade()
 	++this->grade;
 }
 
+//For signing form
+void	Bureaucrat::signForm(Form &form)
+{
+	try
+	{
+	 form.beSigned(*this);
+	 std::cout << this->getName() << " signed " << form.getName() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+	 std::cout << this->getName() << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+	}
+}
+
+
 // Dtor
 Bureaucrat::~Bureaucrat() {}
 

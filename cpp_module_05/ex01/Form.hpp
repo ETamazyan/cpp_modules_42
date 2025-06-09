@@ -1,6 +1,8 @@
 #pragma once
 
-#include <Bureaucrat.hpp>
+#include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form
 {
@@ -21,7 +23,7 @@ public:
 	};
 
 	// getters
-	const string &getName() const;
+	const std::string &getName() const;
 	bool getSign() const;
 	int getSignGrade() const;
 	int getExecuteGrade() const;

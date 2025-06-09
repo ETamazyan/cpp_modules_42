@@ -13,18 +13,19 @@ Form::Form(const std::string &name, bool is_signed, const int sign_grade, const 
 		throw GradeTooHighException();
 	if (execute_grade > 150 || sign_grade > 150)
 		throw GradeTooLowException();
-	// is_signed = false; // if needed
+	is_signed = false; // just to compile
 }
 
 // Copy ctor
-Form::Form(const Form &other) { *this = other; }
+Form::Form(const Form &other) 
+: name(other.name), is_signed(false), sign_grade(other.sign_grade), execute_grade(other.execute_grade)
+{ *this = other; }
 
 // Assignment operator
-Form &Form::operator=(const Form &rhs)
+Form& Form::operator=(const Form& rhs)
 {
-	if (*this == rhs)
-		return (*this);
-	this->is_signed = other.is_signed;
+	if (this != &rhs)
+		this->is_signed = rhs.is_signed;
 	return *this;
 }
 
@@ -39,7 +40,7 @@ const char *Form::GradeTooLowException::what() const throw()
 }
 
 // Getters
-const string &Form::getName() const { return this->name; }
+const std::string &Form::getName() const { return this->name; }
 
 bool Form::getSign() const { return this->is_signed; }
 
@@ -48,8 +49,13 @@ int Form::getSignGrade() const { return this->sign_grade; }
 int Form::getExecuteGrade() const { return this->execute_grade; }
 
 // Form's own function
+// nooooooooooooooooooooooot dooooooooooooooooooooooooooonnnnnnnnnnnnnnneeeeeeeeeeeeeeeee
 void Form::beSigned(const Bureaucrat &obj)
 {
+	if (obj.getGrade() > sign_grade)
+		throw Form::GradeTooLowException();
+	else
+		is_signed = true;
 }
 
 // Dtor
@@ -60,10 +66,10 @@ Form::~Form()
 // Stream output
 std::ostream &operator<<(std::ostream &os, const Form &obj)
 {
-	os << "Name: " << obj.getName << ",\n"
-	   << "Signed: " << obj.getSign << "\nSign_grade: "
-	   << obj.getSignGrade << "\nSign_Exec: "
-	   << obj.getExecuteGrade << ".\n";
+	os << "Form name: " << obj.getName() << ",\n"
+	   << "Signed: " << (obj.getSign() ? " is signed" : "is not signed") << "\nSign_grade: "
+	   << obj.getSignGrade() << "\nSign_Exec: "
+	   << obj.getExecuteGrade() << ".\n";
 
 	// 	const std::string name;
 	// bool is_signed;
