@@ -27,8 +27,10 @@ public:
 	bool getSign() const;
 	int getSignGrade() const;
 	int getExecuteGrade() const;
+	
+	// additional fns
 	void beSigned(const Bureaucrat &bur);
-
+	virtual void execute(const Bureaucrat& executor) const = 0;
 private:
 	const std::string name;
 	bool is_signed;

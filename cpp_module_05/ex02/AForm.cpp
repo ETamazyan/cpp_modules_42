@@ -7,22 +7,23 @@ AForm::AForm() : name("Default"), is_signed(false), sign_grade(150), execute_gra
 
 // Parameterized ctor
 AForm::AForm(const std::string &name, bool is_signed, const int sign_grade, const int execute_grade)
-	: name(name), is_signed(false), sign_grade(sign_grade), execute_grade(execute_grade)
+	: name(name), is_signed(is_signed), sign_grade(sign_grade), execute_grade(execute_grade)
 {
 	if (execute_grade < 1 || sign_grade < 1)
 		throw GradeTooHighException();
 	if (execute_grade > 150 || sign_grade > 150)
 		throw GradeTooLowException();
-	is_signed = false; // just to compile
 }
 
 // Copy ctor
-AForm::AForm(const AForm &other) 
-: name(other.name), is_signed(false), sign_grade(other.sign_grade), execute_grade(other.execute_grade)
-{ *this = other; }
+AForm::AForm(const AForm &other)
+	: name(other.name), is_signed(false), sign_grade(other.sign_grade), execute_grade(other.execute_grade)
+{
+	*this = other;
+}
 
 // Assignment operator
-AForm& AForm::operator=(const AForm& rhs)
+AForm &AForm::operator=(const AForm &rhs)
 {
 	if (this != &rhs)
 		this->is_signed = rhs.is_signed;
@@ -49,7 +50,6 @@ int AForm::getSignGrade() const { return this->sign_grade; }
 int AForm::getExecuteGrade() const { return this->execute_grade; }
 
 // AForm's own function
-// nooooooooooooooooooooooot dooooooooooooooooooooooooooonnnnnnnnnnnnnnneeeeeeeeeeeeeeeee
 void AForm::beSigned(const Bureaucrat &obj)
 {
 	if (obj.getGrade() > sign_grade)
@@ -70,11 +70,5 @@ std::ostream &operator<<(std::ostream &os, const AForm &obj)
 	   << "Signed: " << (obj.getSign() ? "is signed," : "is not signed,") << "\nSign_grade: "
 	   << obj.getSignGrade() << "\nSign_Exec: "
 	   << obj.getExecuteGrade() << ".\n";
-
-	// 	const std::string name;
-	// bool is_signed;
-	// const int sign_grade;
-	// const int execute_grade;
-	// std::cout <<
 	return os;
 }

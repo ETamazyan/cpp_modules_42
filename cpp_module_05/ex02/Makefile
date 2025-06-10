@@ -4,9 +4,9 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
 
 NAME = FormBnotC
 
-INCS = Bureaucrat.hpp AForm.hpp
+INCS = Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp
 
-SRCS = Bureaucrat.cpp main.cpp AForm.cpp
+SRCS = Bureaucrat.cpp main.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
 OBJ_DIR = objects/
 

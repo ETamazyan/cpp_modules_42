@@ -3,9 +3,9 @@
 #include <iostream>
 #include <string>
 #include <exception>
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -21,7 +21,7 @@ public:
 	void increment_grade();
 	void decrement_grade();
 
-	void	signForm(Form &form);
+	void	signForm(AForm &form);
 
 	struct GradeTooHighException : public std::exception
 	{
