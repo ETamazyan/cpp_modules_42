@@ -11,6 +11,7 @@ public:
 	RobotomyRequestForm(RobotomyRequestForm &other);
 	RobotomyRequestForm &operator=(const RobotomyRequestForm &rhs);
 	~RobotomyRequestForm();
+	
 	void execute(const Bureaucrat &bur) const;
 
 	RobotomyRequestForm(const std::string &target);

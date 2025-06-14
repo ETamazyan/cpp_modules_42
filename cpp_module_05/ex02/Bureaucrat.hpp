@@ -17,12 +17,13 @@ public:
 	~Bureaucrat();
 
 	const std::string &getName() const;
-	int getGrade() const;
-	void increment_grade();
-	void decrement_grade();
+	int		getGrade() const;
+	void	increment_grade();
+	void	decrement_grade();
 
 	void	signForm(AForm &form);
-
+	// ex02
+	void	executeForm(AForm const &form);
 	struct GradeTooHighException : public std::exception
 	{
 		const char *what() const throw();

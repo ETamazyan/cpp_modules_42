@@ -7,11 +7,11 @@ class Bureaucrat;
 class AForm
 {
 public:
-	AForm();									  // Default constructor
-	AForm(const std::string &name, bool is_signed, int sign_grade, int execute_grade); // Constructor with parameters
+	AForm();									  // Default ctor
+	AForm(const std::string &name, bool is_signed, int sign_grade, int execute_grade); // Ctor with parameters
 	AForm(const AForm &other);
 	AForm &operator=(const AForm &rhs);
-	~AForm();
+	virtual ~AForm();
 
 	struct GradeTooHighException : public std::exception
 	{
@@ -21,6 +21,11 @@ public:
 	{
 		const char *what() const throw();
 	};
+	// ex02
+	// class	ExecuteUnsignedForm : public std::exception {
+	// 	public:
+	// 		const char*	what()	const throw();
+	// };
 
 	// getters
 	const std::string &getName() const;
@@ -28,7 +33,7 @@ public:
 	int getSignGrade() const;
 	int getExecuteGrade() const;
 	
-	// additional fns
+	// additional fns ex02
 	void beSigned(const Bureaucrat &bur);
 	virtual void execute(const Bureaucrat& executor) const = 0;
 private:
