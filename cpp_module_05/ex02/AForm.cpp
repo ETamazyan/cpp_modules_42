@@ -1,25 +1,23 @@
 #include "AForm.hpp"
+#include "Bureaucrat.hpp"
 
-// Default ctor with default values
-AForm::AForm() : name("Default"), is_signed(false), sign_grade(150), execute_grade(150)
-{
-}
+// Default ctor
+AForm::AForm() : name("Default"), target("None"), is_signed(false), sign_grade(150), execute_grade(150) {}
 
-// Parameterized ctor
-AForm::AForm(const std::string &name, bool is_signed, const int sign_grade, const int execute_grade)
-	: name(name), is_signed(is_signed), sign_grade(sign_grade), execute_grade(execute_grade)
+// Param ctor
+AForm::AForm(const std::string &name, const std::string &target, bool is_signed, int sign_grade, int execute_grade)
+	: name(name), target(target), is_signed(is_signed), sign_grade(sign_grade), execute_grade(execute_grade)
 {
-	if (execute_grade < 1 || sign_grade < 1)
+	if (sign_grade < 1 || execute_grade < 1)
 		throw GradeTooHighException();
-	if (execute_grade > 150 || sign_grade > 150)
+	if (sign_grade > 150 || execute_grade > 150)
 		throw GradeTooLowException();
 }
 
 // Copy ctor
 AForm::AForm(const AForm &other)
-	: name(other.name), is_signed(false), sign_grade(other.sign_grade), execute_grade(other.execute_grade)
+	: name(other.name), target(other.target), is_signed(other.is_signed), sign_grade(other.sign_grade), execute_grade(other.execute_grade)
 {
-	*this = other;
 }
 
 // Assignment operator
@@ -30,45 +28,35 @@ AForm &AForm::operator=(const AForm &rhs)
 	return *this;
 }
 
-const char *AForm::GradeTooHighException::what() const throw()
-{
-	return "The highest possible grade for execute or sign is 1!";
-}
-
-const char *AForm::GradeTooLowException::what() const throw()
-{
-	return "The lowest possible grade for execute or sign is 150!";
-}
+// Destructor
+AForm::~AForm() {}
 
 // Getters
-const std::string &AForm::getName() const { return this->name; }
+const std::string &AForm::getName() const { return name; }
+const std::string &AForm::getTarget() const { return target; }
+bool AForm::getSign() const { return is_signed; }
+int AForm::getSignGrade() const { return sign_grade; }
+int AForm::getExecuteGrade() const { return execute_grade; }
 
-bool AForm::getSign() const { return this->is_signed; }
-
-int AForm::getSignGrade() const { return this->sign_grade; }
-
-int AForm::getExecuteGrade() const { return this->execute_grade; }
-
-// AForm's own function
-void AForm::beSigned(const Bureaucrat &obj)
+// Be signed
+void AForm::beSigned(const Bureaucrat &bur)
 {
-	if (obj.getGrade() > sign_grade)
-		throw AForm::GradeTooLowException();
-	else
-		is_signed = true;
+	if (bur.getGrade() > sign_grade)
+		throw GradeTooLowException();
+	is_signed = true;
 }
 
-// Dtor
-AForm::~AForm()
-{
-}
+// Exceptions
+const char *AForm::GradeTooHighException::what() const throw() { return "Grade too high!"; }
+const char *AForm::GradeTooLowException::what() const throw() { return "Grade too low!"; }
+const char *AForm::FormNotSignedException::what() const throw() { return "Form is not signed!"; }
 
-// Stream output
-std::ostream &operator<<(std::ostream &os, const AForm &obj)
+// Output operator
+std::ostream &operator<<(std::ostream &os, const AForm &form)
 {
-	os << "AForm name: " << obj.getName() << ",\n"
-	   << "Signed: " << (obj.getSign() ? "is signed," : "is not signed,") << "\nSign_grade: "
-	   << obj.getSignGrade() << "\nSign_Exec: "
-	   << obj.getExecuteGrade() << ".\n";
+	os << "Form: " << form.getName() << ", signed: " << (form.getSign() ? "yes" : "no")
+	   << ", sign grade: " << form.getSignGrade()
+	   << ", execute grade: " << form.getExecuteGrade()
+	   << ", target: " << form.getTarget();
 	return os;
 }
