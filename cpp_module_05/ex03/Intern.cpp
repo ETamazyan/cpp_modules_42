@@ -36,18 +36,3 @@ AForm *Intern::makeForm(const std::string &formType, const std::string &formTarg
 	std::cerr << "Intern: unknown form type '" << formType << "'" << std::endl;
 	return NULL;
 }
-
-// ******************************8
-// #include "./Intern.hpp"
-
-// Intern::Intern() {}
-
-// Intern::Intern(const Intern &other) { *this = other; }
-
-// Intern &Intern::operator=(const Intern &) { return *this; }
-
-// // AForm *makeForm(const std::string &nameForm, const std::string &targetForm);
-// // {
-// // }
-
-// Intern::~Intern() {}
