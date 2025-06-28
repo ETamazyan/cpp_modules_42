@@ -1,12 +1,13 @@
 #include "PresidentialPardonForm.hpp"
 
-// Define grades as constants
+#define SIGN_GRADE 25
+#define EXEC_GRADE 5
 
 PresidentialPardonForm::PresidentialPardonForm()
-	: AForm("PresidentialPardonForm", "CoolOne", false, P_SIGN_GRADE, P_EXEC_GRADE) {}
+	: AForm("PresidentialPardonForm", "CoolOne", false, SIGN_GRADE, EXEC_GRADE) {}
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string &target)
-	: AForm("PresidentialPardonForm", target, false, P_SIGN_GRADE, P_EXEC_GRADE) {}
+	: AForm("PresidentialPardonForm", target, false, SIGN_GRADE, EXEC_GRADE) {}
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &other)
 	: AForm(other) {}

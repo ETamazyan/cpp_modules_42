@@ -1,13 +1,11 @@
 #include "ShrubberyCreationForm.hpp"
 #include "Bureaucrat.hpp"
-// #include <fstream>
-// #include <iostream>
 
 ShrubberyCreationForm::ShrubberyCreationForm()
-	: AForm("ShrubberyCreationForm", "Eminem", false, 145, 137) {}
+	: AForm("ShrubberyCreationForm", "Eminem", false, SH_SIGN_GRADE, SH_EXEC_GRADE) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target)
-	: AForm("ShrubberyCreationForm", target, false, 145, 137) {}
+	: AForm("ShrubberyCreationForm", target, false, SH_SIGN_GRADE, SH_EXEC_GRADE) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other)
 	: AForm(other) {}
@@ -15,36 +13,9 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other)
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &rhs)
 {
 	if (this != &rhs)
-		AForm::operator=(rhs); // No assignment to const target
+		AForm::operator=(rhs);
 	return *this;
 }
-
-// void ShrubberyCreationForm::execute(const Bureaucrat &bur) const
-// {
-// 	if (!getSign()) // ✅ use getter instead of private field
-// 		throw AForm::FormNotSignedException();
-// 	if (bur.getGrade() > getExecuteGrade())
-// 		throw AForm::GradeTooLowException();
-
-// 	std::ofstream file((getTarget() + "_shrubbery")); // ✅ use getTarget()
-// 	if (file.is_open())
-// 	{
-// 		file << "       ,@@@@@@@,\n"
-// 				" ,,,.   ,@@@@@@/@@,  .oo8888o.\n"
-// 				",&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o\n"
-// 				",%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'\n"
-// 				"%&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'\n"
-// 				"%&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88'\n"
-// 				"`&%\\ ` /%&'    |.|        \\ '|8'\n"
-// 				"    |o|        | |         | |\n"
-// 				"    |.|        | |         | |\n"
-// 				" \\/ ._\\//_/__/  ,\\_//__\\/.  \\_//__/_\n"
-// 				" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-// 		file.close();
-// 	}
-// 	else
-// 		std::cerr << "Could not open file.\n";
-// }
 
 void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 {
@@ -101,19 +72,3 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {}
 // //   		"\033[1;34m    |o|        | |         | |\033[0m\n"
 // //   		"\033[1;34m    |.|        | |         | |\033[0m\n"
 // //   		"\033[1;36m \\/ ._\\//_/__/  ,\\_//__\\/.  \\_//__/_\033[0m\n";
-
-// 	// if (file.is_open())
-// 	// {
-// 	// 	file << "              ,@@@@@@@,\n"
-// 	// 			"      ,,,.   ,@@@@@@/@@,  .oo8888o.\n"
-// 	// 			"   ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o\n"
-// 	// 			"  ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'\n"
-// 	// 			"  %&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'\n"
-// 	// 			"  %&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88'\n"
-// 	// 			"  `&%\\ ` /%&'    |.|        \\ '|8'\n"
-// 	// 			"      |o|        | |         | |\n"
-// 	// 			"      |.|        | |         | |\n"
-// 	// 			"   \\/ ._\\//_/__/  ,\\_//__\\/.  \\_//__/_\n"
-// 	// 			"   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-// 	// 	file.close();
-// 	// }

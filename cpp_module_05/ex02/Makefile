@@ -2,7 +2,7 @@ CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
 
-NAME = FormBnotC
+NAME = formBnotC
 
 INCS = Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp
 
@@ -27,6 +27,7 @@ clean:
 # $(RM) flexible for other platforms too
 fclean: clean
 	@$(RM) -rf $(NAME)
+	@$(RM) -f *_shrubbery
 
 re: fclean all
 

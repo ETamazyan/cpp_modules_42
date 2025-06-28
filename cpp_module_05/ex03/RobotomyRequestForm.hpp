@@ -1,8 +1,5 @@
 #pragma once
 
-# define R_SIGN_GRADE 72
-# define R_EXEC_GRADE 45
-
 #include "AForm.hpp"
 #include <cstdlib>
 #include <iostream>

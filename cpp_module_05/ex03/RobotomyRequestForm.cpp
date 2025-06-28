@@ -1,10 +1,10 @@
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm()
-	: AForm("RobotomyRequestForm", "Liparid", false, R_SIGN_GRADE, R_EXEC_GRADE) {}
+	: AForm("RobotomyRequestForm", "Liparid", false, 72, 45) {}
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string &target)
-	: AForm("RobotomyRequestForm", target, false, R_SIGN_GRADE, R_EXEC_GRADE) {}
+	: AForm("RobotomyRequestForm", target, false, 72, 45) {}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other)
 	: AForm(other) {}
@@ -30,5 +30,4 @@ void RobotomyRequestForm::execute(const Bureaucrat &executor) const
 	else
 		std::cout << "The robotomy of " << getTarget() << " failed." << std::endl;
 }
-
 RobotomyRequestForm::~RobotomyRequestForm() {}
