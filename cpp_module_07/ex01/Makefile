@@ -1,7 +1,6 @@
 CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-#-Wshadow and -Wno-shadow compiler flags
 
 NAME = iter
 

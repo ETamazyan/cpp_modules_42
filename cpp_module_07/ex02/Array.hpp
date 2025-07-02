@@ -6,45 +6,45 @@ template <typename T>
 class Array
 {
 private:
-	T* _array;
-	unsigned int _size;
+	T* m_array;
+	unsigned int m_size;
 
 public:
-	Array() : _array(NULL), _size(0) {}
+	Array() : m_array(NULL), m_size(0) {}
 
-	Array(unsigned int n) : _array(new T[n]), _size(n) {}
+	Array(unsigned int n) : m_array(new T[n]), m_size(n) {}
 
-	Array(const Array &other) : _array(new T[other._size]), _size(other._size) {
-		for (unsigned int i = 0; i < _size; i++)
-			_array[i] = other._array[i];
+	Array(const Array &other) : m_array(new T[other.m_size]), m_size(other.m_size) {
+		for (unsigned int i = 0; i < m_size; i++)
+			m_array[i] = other.m_array[i];
 	}
 
 	~Array() {
-		delete[] _array;
+		delete[] m_array;
 	}
 
 	Array &operator=(const Array &other) {
 		if (this != &other) {
-			delete[] _array;
-			_size = other._size;
-			_array = new T[_size];
-			for (unsigned int i = 0; i < _size; i++)
-			_array[i] = other._array[i];
+			delete[] m_array;
+			m_size = other.m_size;
+			m_array = new T[m_size];
+			for (unsigned int i = 0; i < m_size; i++)
+			m_array[i] = other.m_array[i];
 		}
 		return *this;
 	}
 	
 	T &operator[](unsigned int index){
-		if (index >= _size)
+		if (index >= m_size)
 		throw OutOfLimits();
-		return _array[index];
+		return m_array[index];
 	}
 	
 	unsigned int size() const { 
-		return _size;
+		return m_size;
 	}
 
-	class OutOfLimits : public std::exception {
+	struct OutOfLimits : public std::exception {
 	public:
 		virtual const char *what () const  throw() {
 			return "Index OUT OF LIMITS";
