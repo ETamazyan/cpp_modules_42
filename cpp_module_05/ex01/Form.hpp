@@ -7,8 +7,8 @@ class Bureaucrat;
 class Form
 {
 public:
-	Form();									  // Default constructor
-	Form(const std::string &name, bool is_signed, int sign_grade, int execute_grade); // Constructor with parameters
+	Form();
+	Form(const std::string &name, int sign_grade, int execute_grade);
 	Form(const Form &other);
 	Form &operator=(const Form &rhs);
 	~Form();
@@ -27,13 +27,14 @@ public:
 	bool getSign() const;
 	int getSignGrade() const;
 	int getExecuteGrade() const;
+
 	void beSigned(const Bureaucrat &bur);
 
 private:
-	const std::string name;
-	bool is_signed;
-	const int sign_grade;
-	const int execute_grade;
+	const std::string	name;
+	bool 				is_signed;
+	const int			sign_grade;
+	const int			execute_grade;
 };
 
 std::ostream &operator<<(std::ostream &os, const Form &obj);

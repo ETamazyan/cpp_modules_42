@@ -10,8 +10,8 @@ class Form;
 class Bureaucrat
 {
 public:
-	Bureaucrat(); // Default constructor
-	Bureaucrat(const std::string &name, int grade); // Constructor with parameters
+	Bureaucrat();
+	Bureaucrat(const std::string &name, int grade);
 	Bureaucrat(const Bureaucrat &other);
 	Bureaucrat &operator=(const Bureaucrat &rhs);
 	~Bureaucrat();
@@ -21,6 +21,7 @@ public:
 	void increment_grade();
 	void decrement_grade();
 
+	//ex01
 	void	signForm(Form &form);
 
 	struct GradeTooHighException : public std::exception

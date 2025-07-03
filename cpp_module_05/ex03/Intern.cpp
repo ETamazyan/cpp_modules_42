@@ -1,5 +1,4 @@
 #include "Intern.hpp"
-#include <iostream>
 
 Intern::Intern() {}
 Intern::Intern(const Intern &other) { (void)other; }
@@ -33,6 +32,13 @@ AForm *Intern::makeForm(const std::string &formType, const std::string &formTarg
 			return forms[i].creator(formTarget);
 		}
 	}
+	
 	std::cerr << "Intern: unknown form type '" << formType << "'" << std::endl;
+		std::cout << "Allowed requests: ";
+	for (size_t i = 0; i < sizeof(forms) / sizeof(FormPair); ++i)
+	{
+		std::cout << "\"" << forms[i].name << "\" ";
+	}
+	std::cout << std::endl;
 	return NULL;
 }

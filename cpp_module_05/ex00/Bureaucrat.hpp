@@ -7,14 +7,15 @@
 class Bureaucrat
 {
 public:
-	Bureaucrat(); // Default constructor
-	Bureaucrat(const std::string &name, int grade); // Constructor with parameters
+	Bureaucrat();
+	Bureaucrat(const std::string &name, int grade); // Ctor with params
 	Bureaucrat(const Bureaucrat &other);
 	Bureaucrat &operator=(const Bureaucrat &rhs);
 	~Bureaucrat();
 
 	const std::string &getName() const;
-	int getGrade() const;
+	int				   getGrade() const;
+	
 	void increment_grade();
 	void decrement_grade();
 

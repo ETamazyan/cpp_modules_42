@@ -3,7 +3,7 @@
 // Define grades as constants
 
 PresidentialPardonForm::PresidentialPardonForm()
-	: AForm("PresidentialPardonForm", "CoolOne", false, P_SIGN_GRADE, P_EXEC_GRADE) {}
+	: AForm("PresidentialPardonForm", "PR_def", false, P_SIGN_GRADE, P_EXEC_GRADE) {}
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string &target)
 	: AForm("PresidentialPardonForm", target, false, P_SIGN_GRADE, P_EXEC_GRADE) {}

@@ -4,7 +4,7 @@
 #define EXEC_GRADE 5
 
 PresidentialPardonForm::PresidentialPardonForm()
-	: AForm("PresidentialPardonForm", "CoolOne", false, SIGN_GRADE, EXEC_GRADE) {}
+	: AForm("PresidentialPardonForm", "PR_def", false, SIGN_GRADE, EXEC_GRADE) {}
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string &target)
 	: AForm("PresidentialPardonForm", target, false, SIGN_GRADE, EXEC_GRADE) {}

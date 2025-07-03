@@ -13,5 +13,7 @@ public:
 	~Intern();
 
 public:
+	// AForm*	makeForm(std::string name, std::string target);
+
 	AForm *makeForm(const std::string &nameForm, const std::string &targetForm);
 };

@@ -1,7 +1,7 @@
 #include "Bureaucrat.hpp"
 
 // Default ctor with default values
-Bureaucrat::Bureaucrat() : name("default"), grade(150) {}
+Bureaucrat::Bureaucrat() : name("Default"), grade(150) {}
 
 // Parameterized ctor
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : name(name)
@@ -26,9 +26,8 @@ Bureaucrat::Bureaucrat(const Bureaucrat &other) : name(other.name), grade(other.
 // Assignment operator
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs)
 {
-	if (this == &rhs)
-		return *this;
-	this->grade = rhs.grade;
+	if (this != &rhs)
+		this->grade = rhs.getGrade();
 	return *this;
 }
 

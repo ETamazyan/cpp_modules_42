@@ -26,6 +26,10 @@ int main()
 		mid.executeForm(robo);	 // might fail if mid is not high enough
 		low.executeForm(pardon); // should fail
 
+		std::cout << "\n--- ******************* ---\n";
+		std::cout << robo;
+		std::cout << "\n--- ******************* ---\n";
+		
 			std::cout << "\n--- Invalid Grades ---\n";
 			try
 			{
@@ -35,7 +39,6 @@ int main()
 			{
 				std::cerr << "Exception caught: " << e.what() << std::endl;
 			}
-
 			try
 			{
 				PresidentialPardonForm badForm("Zaphod");

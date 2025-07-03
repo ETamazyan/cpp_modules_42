@@ -6,12 +6,13 @@ AForm::AForm() : name("Default"), target("None"), is_signed(false), sign_grade(1
 
 // Param ctor
 AForm::AForm(const std::string &name, const std::string &target, bool is_signed, int sign_grade, int execute_grade)
-	: name(name), target(target), is_signed(is_signed), sign_grade(sign_grade), execute_grade(execute_grade)
+	: name(name), target(target), is_signed(false), sign_grade(sign_grade), execute_grade(execute_grade)
 {
 	if (sign_grade < 1 || execute_grade < 1)
 		throw GradeTooHighException();
 	if (sign_grade > 150 || execute_grade > 150)
 		throw GradeTooLowException();
+	static_cast<void>(is_signed);
 }
 
 // Copy ctor
@@ -46,17 +47,25 @@ void AForm::beSigned(const Bureaucrat &bur)
 	is_signed = true;
 }
 
+void	AForm::execute(Bureaucrat const & executor) const
+{
+	if (is_signed == false)
+		throw AForm::FormNotSignedException();
+	if (executor.getGrade() > execute_grade)
+		throw AForm::GradeTooLowException();
+}
+
 // Exceptions
 const char *AForm::GradeTooHighException::what() const throw() { return "Grade too high!"; }
 const char *AForm::GradeTooLowException::what() const throw() { return "Grade too low!"; }
 const char *AForm::FormNotSignedException::what() const throw() { return "Form is not signed!"; }
 
 // Output operator
-std::ostream &operator<<(std::ostream &os, const AForm &form)
+std::ostream &operator<<(std::ostream &os, const AForm &obj)
 {
-	os << "Form: " << form.getName() << ", signed: " << (form.getSign() ? "yes" : "no")
-	   << ", sign grade: " << form.getSignGrade()
-	   << ", execute grade: " << form.getExecuteGrade()
-	   << ", target: " << form.getTarget();
+	os << "Form name: " << obj.getName() << ",\n"
+	   << "Signed: " << (obj.getSign() ? "is signed," : "is not signed,") << "\nSign_Grade: "
+	   << obj.getSignGrade() << "\nSign_Exec: "
+	   << obj.getExecuteGrade() << ".\n";
 	return os;
 }
