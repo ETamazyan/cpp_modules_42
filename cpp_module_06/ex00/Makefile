@@ -2,11 +2,11 @@ CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = iter
+NAME = conversionOfScalarTypes
 
-INCS = iter.hpp
+INCS = 	ScalarConverter.hpp 
 
-SRCS = main.cpp
+SRCS = main.cpp ScalarConverter.cpp
 
 OBJ_DIR = objects/
 

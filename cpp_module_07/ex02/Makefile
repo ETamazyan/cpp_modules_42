@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = tmp
 
-INCS = Array.hpp
+INCS = Array.hpp Array.tpp
 
 SRCS = main.cpp
 

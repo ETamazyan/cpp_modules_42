@@ -1,13 +1,12 @@
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
-#-Wshadow and -Wno-shadow compiler flags
+CFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
 
 NAME = tmp
 
 INCS = whatever.hpp
 
-SRCS = main.cpp
+SRCS =  main.cpp
 
 OBJ_DIR = objects/
 
@@ -28,6 +27,7 @@ clean:
 # $(RM) flexible for other platforms too
 fclean: clean
 	@$(RM) -rf $(NAME)
+	@$(RM) -f *_shrubbery
 
 re: fclean all
 

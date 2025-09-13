@@ -1,38 +1,87 @@
+#include <iostream>
+#include <cstdlib>
 #include "Array.hpp"
 
-// int main()
-// {
-// 	{
-// 		Array<int> intArray(5);
 
-// 		for (unsigned int i = 0; i < intArray.size(); i++)
-// 		{
-// 			intArray[i] = i;
-// 			std::cout << intArray[i] << std::endl;
-// 		}
-// 		std::cout << "Size: " << intArray.size() << std::endl;
-// 	}
-// 	{
-// 		Array<char> charArray(10);
-		
-// 		for (unsigned int i = 0; i < charArray.size(); i++)
-// 		{
-// 			charArray[i] = i + 65;
-// 			std::cout << charArray[i] << std::endl;
-// 		}
-// 		std::cout << "Size: " << charArray.size() << std::endl;
-// 	}
-// 	{
-// 		Array<std::string> *stringArray = new Array<std::string>(3);
-		
-// 		(*stringArray)[0] = "Hello";
-// 		(*stringArray)[1] = "World";
-// 		(*stringArray)[2] = "!";
 
-// 		for (unsigned int i = 0; i < stringArray->size(); i++)
-// 			std::cout << (*stringArray)[i] << std::endl;
-// 		std::cout << "Size: " << stringArray->size() << std::endl;
-// 		delete stringArray;
-// 	}
-// 	return 0;
-// }
+#define MAX_VAL 10
+
+#include <iostream>
+#include <cstdlib>
+#include <ctime>      // for time()
+#include "Array.hpp"
+
+#define MAX_VAL 10
+
+int main(void)
+{
+    Array<int> numbers(MAX_VAL);
+    int *mirror = new int[MAX_VAL];
+
+    std::srand(std::time(NULL));
+
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        const int value = std::rand();
+        numbers[i] = value;
+        mirror[i] = value;
+    }
+
+    std::cout << "\n\033[1;32mOriginal Array & Mirror Verification:\033[0m" << std::endl;
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        std::cout << "numbers[" << i << "]: " << numbers[i] 
+                  << " | mirror[" << i << "]: " << mirror[i] << std::endl;
+    }
+
+    std::cout << "\n\033[1;36mTesting Copy Constructor and Assignment:\033[0m" << std::endl;
+    {
+        Array<int> tmp = numbers;
+        Array<int> test;
+        test = tmp;
+
+        for (int i = 0; i < MAX_VAL; i++)
+        {
+            std::cout << "tmp[" << i << "]: " << tmp[i] 
+                      << " | test[" << i << "]: " << test[i] << std::endl;
+        }
+    }
+
+    std::cout << "\033[1;33mVerifying Array Integrity:\033[0m" << std::endl;
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        if (mirror[i] != numbers[i])
+        {
+            std::cerr << "Error: Values in the copied array do not match the original!" << std::endl;
+            delete[] mirror;
+            return 1;
+        }
+    }
+    std::cout << "✅ All values match successfully!" << std::endl;
+
+    std::cout << "\033[1;31mTesting Out-of-Bounds Access:\033[0m" << std::endl;
+    try
+    {
+        std::cout << "Attempting to access index -2..." << std::endl;
+        numbers[-2] = 0;
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << "Caught Exception: " << e.what() << '\n';
+    }
+
+    try
+    {
+        std::cout << "Attempting to access index MAX_VAL..." << std::endl;
+        numbers[MAX_VAL] = 0;
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << "Caught Exception: " << e.what() << '\n';
+    }
+
+    std::cout << "\n\033[1;32m✅ All tests completed successfully!\033[0m" << std::endl;
+
+    delete[] mirror;
+    return 0;
+}
