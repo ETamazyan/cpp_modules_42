@@ -1,28 +1,33 @@
-NAME = IdentifyRealType
-
-HEADERS = 	Base.hpp
-
-SRCS =		main.cpp \
-			Base.cpp
-
-OBJS = $(SRCS:.cpp=.o)
 
 CC = c++
+
 CFLAGS = -Wall -Wextra -Werror -std=c++98
+
+NAME = serialization
+
+INCS = 	Base.hpp
+
+SRCS = main.cpp Base.cpp
+
+OBJ_DIR = objects/
+
+OBJS = $(SRCS:%.cpp=$(OBJ_DIR)%.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-
-%.o: %.cpp $(HEADERS) Makefile
+$(OBJ_DIR)%.o: %.cpp Makefile $(INCS)
+	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-clean:
-	rm -rf $(OBJS)
+$(NAME): $(OBJS)
+	$(CC) $(OBJS) $(CFLAGS) -o $(NAME)
 
+clean:
+	@$(RM) -rf $(OBJ_DIR) 
+
+# $(RM) flexible for other platforms too
 fclean: clean
-	rm -rf $(NAME)
+	@$(RM) -rf $(NAME)
 
 re: fclean all
 

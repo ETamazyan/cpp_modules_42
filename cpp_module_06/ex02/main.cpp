@@ -6,7 +6,7 @@ int main(void)
 	{
 		Base *a = Base::generate();
 
-		std::cout << "geenrating class: ";
+		std::cout << "generating class: ";
 
 		Base::identify(a);
 

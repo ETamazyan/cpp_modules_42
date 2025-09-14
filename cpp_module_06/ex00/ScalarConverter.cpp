@@ -6,9 +6,7 @@ ScalarConverter::ScalarConverter(const ScalarConverter &rhs){*this = rhs;}
 
 // ScalarConverter &ScalarConverter::operator=(const ScalarConverter &rhs){	return *this;}
 // below is for unused parameter rhs
-ScalarConverter &ScalarConverter::operator=(const ScalarConverter &/*rhs*/) {
-    return *this;
-}
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &/*rhs*/) {return *this;}
 
 
 ScalarConverter::~ScalarConverter(){}
@@ -139,7 +137,6 @@ int validation(const std::string &av)
 
 	if (av.length() == 1 && !std::isdigit(av[0]))
 		return 0;
-
 	while (av[i])
 	{
 		if (av == "-inff" || av == "+inff" || av == "inff" || av == "inf" || av == "-inf" || av == "+inf")
@@ -167,6 +164,5 @@ int validation(const std::string &av)
 		else
 			return 1;
 	}
-
 	return 0;
 }

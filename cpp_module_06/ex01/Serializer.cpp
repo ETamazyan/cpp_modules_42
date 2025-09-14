@@ -2,22 +2,14 @@
 
 Serializer::Serializer()
 {
-	std::cout << "Serializer's default constructor called" << std::endl;
 }
 
 Serializer::Serializer(const Serializer &rhs)
 {
-	std::cout << "Serializer's copy constructor called" << std::endl;
 	*this = rhs;
 }
 
-Serializer &Serializer::operator=(const Serializer &rhs)
-{
-	std::cout << "Serializer's copy assignment operator called" << std::endl;
-	if (this != &rhs)
-		;
-	return *this;
-}
+Serializer &Serializer::operator=(const Serializer &/*rhs*/){return *this;}
 
 Serializer::~Serializer()
 {

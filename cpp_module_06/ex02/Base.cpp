@@ -71,5 +71,4 @@ void Base::identify(Base &obj)
 
 Base::~Base()
 {
-    std::cout << "Base's destructor called." << std::endl;
 }

@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include <string>
+#include <stdint.h> // C-style, works in C++98
+#include <cstddef> // for size_t
+
 
 struct Data
 {
