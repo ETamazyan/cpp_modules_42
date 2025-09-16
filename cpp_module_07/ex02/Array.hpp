@@ -1,6 +1,10 @@
 #pragma once
 
 #include <iostream>
+#include <cstdlib>
+#include "Array.hpp"
+#include <ctime>
+
 
 template <typename T>
 class Array
