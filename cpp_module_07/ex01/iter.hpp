@@ -1,27 +1,5 @@
-// #pragma once
-// #include <iostream>
+#pragma once 
 
-// template <class T>
-// void iter(T *array, size_t size, void (*f)(T const &))
-// {
-// 	for (size_t i = 0; i < size; i++)
-// 	{
-// 		f(array[i]);
-// 	}
-// }
-
-
-// **********************************************
-
-// iter.hpp
-#pragma once
-
-#ifndef ITER_HPP
-#define ITER_HPP
-
-
-#include <iostream>
-#include <string>
 #include <cstddef>  
 
 template <typename T, typename F>
@@ -42,5 +20,3 @@ void iter(const T* array, size_t length, F func)
     for (size_t i = 0; i < length; ++i)
         func(array[i]);
 }
-
-#endif

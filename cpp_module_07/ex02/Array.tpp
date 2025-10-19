@@ -1,4 +1,7 @@
 #include "Array.hpp"
+#include <exception>
+#include <iostream>
+
 
 template <typename T>
 Array<T>::Array() : _array(NULL), _size(0)
@@ -53,7 +56,7 @@ Array<T> &Array<T>::operator=(const Array &rhs)
 	}
 	else
 	{
-		delete this->_array;
+		delete[] this->_array;
 		this->_array = temp;
 		this->_size = rhs._size;
 		for (unsigned int i = 0; i < rhs._size; i++)
@@ -71,7 +74,8 @@ T &Array<T>::operator[](unsigned int i)
 	{
 		return (_array[i]);
 	}
-	throw std::exception();
+	// throw std::exception("Array index out of range");
+	throw std::out_of_range("Array index out of range");
 }
 
 template <typename T>

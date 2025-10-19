@@ -1,3 +1,5 @@
+#include "Array.hpp"
+
 #define MAX_VAL 10
 
 int main() {
