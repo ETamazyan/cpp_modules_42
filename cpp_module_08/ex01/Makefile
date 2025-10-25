@@ -4,9 +4,9 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
 
 NAME = span
 
-INCS = span.hpp
+INCS = Span.hpp
 
-SRCS =  main.cpp span.tpp
+SRCS =  main.cpp Span.cpp
 
 OBJ_DIR = objects/
 
