@@ -6,7 +6,7 @@ NAME = easyFind
 
 INCS = easyFind.hpp
 
-SRCS =  main.cpp easyFind.tpp
+SRCS =  main.cpp 
 
 OBJ_DIR = objects/
 
