@@ -1,4 +1,4 @@
-#include "easyFind.hpp"
+#include "easyfind.hpp"
 #include <vector>
 #include <list>
 #include <deque>

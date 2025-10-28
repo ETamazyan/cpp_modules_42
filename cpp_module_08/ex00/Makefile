@@ -2,9 +2,9 @@ CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
 
-NAME = easyFind
+NAME = easyfind
 
-INCS = easyFind.hpp
+INCS = easyfind.hpp
 
 SRCS =  main.cpp 
 
