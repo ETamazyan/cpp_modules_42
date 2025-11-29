@@ -35,8 +35,9 @@ void BitcoinExchange::loadDatabase(const std::string &csvFile) {
         std::exit(1);
     }
 
+    // skip header, check later if the program should work with this exact way
     std::string line;
-    std::getline(file, line); // skip header
+    std::getline(file, line);
 
     while (std::getline(file, line)) {
         if (line.empty())
@@ -53,34 +54,6 @@ void BitcoinExchange::loadDatabase(const std::string &csvFile) {
         this->database[date] = rate;
     }
 }
-
-
-// void BitcoinExchange::loadDatabase() {
-//     std::ifstream file("data.csv");
-//     if (!file.is_open()) {
-//         std::cerr << "Error: could not open data.csv" << std::endl;
-//         std::exit(1);
-//     }
-
-//     std::string line;
-//     std::getline(file, line); // skip header
-
-//     while (std::getline(file, line)) {
-//         if (line.empty())
-//             continue;
-
-//         size_t delim = line.find(',');
-//         if (delim == std::string::npos)
-//             continue;
-
-//         std::string date = line.substr(0, delim);
-//         std::string price = line.substr(delim + 1);
-
-//         double rate = std::strtod(price.c_str(), NULL);
-//         this->database[date] = rate;
-//     }
-// }
-
 
 bool BitcoinExchange::isValidDate(const std::string &date) const
 {
@@ -142,8 +115,9 @@ void BitcoinExchange::exchange() {
         std::exit(1);
     }
 
+    // for skipping the  header, check later if this is okay to be here
     std::string line;
-    std::getline(infile, line); // skip header
+    std::getline(infile, line);
 
     while (std::getline(infile, line)) {
         if (line.empty())
@@ -155,30 +129,24 @@ void BitcoinExchange::exchange() {
             continue;
         }
 
-        // extract parts
         std::string date = line.substr(0, pipe);
         std::string value = line.substr(pipe + 1);
 
-        // trim whitespace (simple C++98-safe trim)
         trim(date);
         trim(value);
 
-        // validate date
         if (!isValidDate(date)) {
             std::cerr << "Error: bad input => " << line << std::endl;
             continue;
         }
 
-        // validate value format
         if (!isValidValue(value)) {
-            continue; // isValidValue prints one of:
-                      // "Error: not a positive number."
-                      // "Error: too large a number."
+            continue; 
         }
 
         double v = std::strtod(value.c_str(), NULL);
 
-        // find closest date
+        // closest date
         std::string closest = findClosestDate(date);
         double rate = this->database.at(closest);
 
@@ -196,10 +164,3 @@ void BitcoinExchange::trim(std::string &s) const
     while (!s.empty() && (s[s.length() - 1] == ' ' || s[s.length() - 1] == '\t'))
         s.erase(s.length() - 1, 1);
 }
-
-// void trim(std::string &s) {
-//     while (!s.empty() && (s[0] == ' ' || s[0] == '\t'))
-//         s.erase(0, 1);
-//     while (!s.empty() && (s[s.length() - 1] == ' ' || s[s.length() - 1] == '\t'))
-//         s.erase(s.length() - 1, 1);
-// }

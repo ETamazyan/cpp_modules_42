@@ -29,29 +29,6 @@ int main(int argc, char **argv)
 // // • A valid date will always be in the following format: Year-Month-Day.
 // // • A valid value must be either a float or a positive integer, between 0 and 1000.
 
-// int main(int argc, char **argv)
-// {
-// 	if (argc == 2)
-// 	{
-// 		BitcoinExchange btc(argv[1]);
-// 		try {
-// 			btc.exchange();
-// 		}
-// 		catch (const std::exception& e)
-// 		{
-// 			std::cout << e.what() << std::endl;
-// 		}
-// 	}
-// 	else
-// 	{
-// 		std::cerr << "Error: could not open file." << std::endl;
-// 		return (1);
-// 	}
-
-	
-// 	return (0);
-// }
-
 // // $> ./btc
 // // Error: could not open file.
 // // $> ./btc input.txt
