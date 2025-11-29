@@ -2,11 +2,11 @@ CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
 
-NAME = easyfind
+NAME = RPN
 
-INCS = easyfind.hpp
+INCS = RPN.hpp
 
-SRCS =  main.cpp 
+SRCS =  main.cpp RPN.cpp
 
 OBJ_DIR = objects/
 
