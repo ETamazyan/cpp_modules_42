@@ -1,8 +1,5 @@
 #include "PmergeMe.hpp"
-#include <iostream>
-#include <sstream>
-#include <sys/time.h>
-#include <iomanip>
+
 
 static double timevalToMicro(const struct timeval &a, const struct timeval &b) {
     double sec = (double)(b.tv_sec - a.tv_sec);
