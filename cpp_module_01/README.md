@@ -240,7 +240,7 @@ Each exercise directory contains its implementation and, where applicable, a Mak
 
 Part of my C++ learning journey at 42 Yerevan.
 
-GitHub: [@ETamazyan](https://github.com/YOUR_GITHUB_USERNAME)
+GitHub: [@ETamazyan](https://github.com/ETamazyan)
 
 ---
 
